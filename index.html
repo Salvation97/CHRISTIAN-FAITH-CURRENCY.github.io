@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Christian Faith Currency | Sow Seed of Faith + Prayer Wall</title>
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, 'Roboto', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(145deg, #e9efe6 0%, #dde3db 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+    }
+
+    .app-container {
+      max-width: 1350px;
+      width: 100%;
+      background: #ffffff;
+      border-radius: 2.5rem;
+      box-shadow: 0 25px 45px -12px rgba(0, 0, 0, 0.2), 0 1px 3px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      transition: all 0.2s ease;
+    }
+
+    .brand-header {
+      background: linear-gradient(115deg, #15322e 0%, #1f403a 100%);
+      padding: 1.1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      border-bottom: 3px solid #e9c784;
+    }
+
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .cross-logo {
+      background: radial-gradient(circle at 30% 20%, #f9e0a0, #dbb45c);
+      width: 52px;
+      height: 52px;
+      border-radius: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255,255,240,0.6);
+    }
+    .cross-logo i {
+      font-size: 2.1rem;
+      color: #2c2b1f;
+      text-shadow: 0 1px 1px rgba(255,245,200,0.8);
+    }
+
+    .logo h1 {
+      font-size: 1.9rem;
+      letter-spacing: -0.3px;
+      font-weight: 800;
+      background: linear-gradient(135deg, #f9efcf, #efd598);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .logo p {
+      font-size: 0.75rem;
+      color: #dbd3b0;
+    }
+
+    .verse {
+      font-style: italic;
+      font-size: 0.85rem;
+      background: rgba(219, 180, 92, 0.2);
+      backdrop-filter: blur(4px);
+      padding: 0.45rem 1.3rem;
+      border-radius: 40px;
+      border: 1px solid rgba(233, 199, 132, 0.5);
+      color: #fff3df;
+    }
+
+    .main-panel {
+      padding: 2rem;
+      min-height: 70vh;
+    }
+
+    .dashboard-card, .auth-card, .page-card {
+      background: #ffffff;
+      border-radius: 2rem;
+      box-shadow: 0 12px 28px -12px rgba(0, 0, 0, 0.08), 0 0 0 1px #f0eadb;
+      padding: 2rem;
+      transition: all 0.2s;
+    }
+
+    /* Page hint styles */
+    .page-hint {
+      background: #f0f3ea;
+      border-left: 6px solid #dbb45c;
+      padding: 0.85rem 1.2rem;
+      border-radius: 1.2rem;
+      margin-bottom: 1.8rem;
+      font-size: 0.9rem;
+      color: #2f4d47;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .page-hint i {
+      font-size: 1.5rem;
+      color: #b68b40;
+    }
+    .page-hint span {
+      flex: 1;
+    }
+
+    /* Auth tab buttons */
+    .auth-tabs {
+      display: flex;
+      gap: 1.2rem;
+      justify-content: center;
+      margin-bottom: 2rem;
+    }
+    .auth-tabs button {
+      width: auto;
+      min-width: 130px;
+      background: #e8d9bf;
+      color: #2b4b46;
+      font-weight: 700;
+      padding: 0.75rem 1.5rem;
+      border-radius: 3rem;
+      transition: all 0.2s;
+      cursor: pointer;
+      border: none;
+    }
+    .auth-tabs button:hover {
+      background: #dfcfaf;
+      transform: translateY(-2px);
+    }
+    .auth-tabs button.active-tab {
+      background: #23635c;
+      color: white;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    .user-welcome {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      background: #fefbf4;
+      padding: 1rem 1.8rem;
+      border-radius: 1.8rem;
+      margin-bottom: 1.8rem;
+      align-items: center;
+      border: 1px solid #efe2ca;
+      gap: 1rem;
+    }
+
+    .balance-card {
+      background: linear-gradient(125deg, #1f423d, #14332e);
+      color: #fff8ea;
+      padding: 1.8rem;
+      border-radius: 1.8rem;
+      text-align: center;
+      margin-bottom: 2rem;
+      box-shadow: 0 12px 20px -10px rgba(0,0,0,0.2);
+    }
+    .balance-amount {
+      font-size: 3rem;
+      font-weight: 800;
+      color: #ffe2a4;
+      letter-spacing: 1px;
+    }
+
+    .functions-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1.3rem;
+      margin-top: 1.2rem;
+    }
+
+    .func-btn {
+      background: #fefaf5;
+      border: 1px solid #e8decd;
+      padding: 1rem 0.8rem;
+      border-radius: 1.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.25s;
+      color: #1f3e3a;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      text-align: center;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+    }
+    .func-btn:hover {
+      background: #fff7eb;
+      transform: translateY(-4px);
+      border-color: #dbb45c;
+      box-shadow: 0 16px 20px -12px rgba(0, 0, 0, 0.12);
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    label {
+      font-weight: 600;
+      display: block;
+      margin-bottom: 0.5rem;
+      color: #2b4b46;
+    }
+    input, button, select, textarea {
+      width: 100%;
+      padding: 0.85rem 1.2rem;
+      border-radius: 1.4rem;
+      border: 1px solid #e2d9cb;
+      font-size: 0.95rem;
+      background: #fff;
+      transition: 0.2s;
+    }
+    select {
+      cursor: pointer;
+    }
+    textarea {
+      min-height: 130px;
+      resize: vertical;
+    }
+    input:focus, textarea:focus, select:focus {
+      outline: none;
+      border-color: #dbb45c;
+      box-shadow: 0 0 0 2px rgba(219,180,92,0.2);
+    }
+    button {
+      background: #23635c;
+      color: white;
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    button:hover {
+      background: #1c4e48;
+      transform: translateY(-2px);
+    }
+    .btn-secondary {
+      background: #e8d9bf;
+      color: #2b4b46;
+    }
+    .btn-secondary:hover {
+      background: #dfcfaf;
+    }
+
+    .back-dashboard {
+      margin-top: 2rem;
+      text-align: center;
+    }
+    .back-dashboard button {
+      width: auto;
+      min-width: 180px;
+      padding: 0.7rem 1.5rem;
+    }
+
+    .request-row {
+      background: #fcf9f3;
+      border-left: 5px solid #dbb45c;
+      margin-bottom: 1rem;
+      padding: 1rem;
+      border-radius: 1.2rem;
+    }
+    .prayer-text, .expectation-text {
+      background: #fef6e6;
+      padding: 0.8rem;
+      border-radius: 1rem;
+      margin: 0.6rem 0;
+      font-style: italic;
+      color: #3a2c1f;
+      border-left: 3px solid #dbb45c;
+    }
+    .admin-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-top: 0.8rem;
+    }
+    .admin-actions button {
+      width: auto;
+      margin: 0;
+      padding: 0.5rem 1.2rem;
+      font-size: 0.85rem;
+    }
+    .status-badge {
+      font-size: 0.7rem;
+      background: #eae1cf;
+      border-radius: 40px;
+      padding: 0.2rem 0.8rem;
+      display: inline-block;
+      font-weight: 600;
+    }
+    .toast-notification {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      background: #1e3a34;
+      color: #fff1dd;
+      padding: 12px 26px;
+      border-radius: 60px;
+      z-index: 1200;
+      font-weight: 500;
+      box-shadow: 0 12px 20px rgba(0,0,0,0.15);
+      animation: fadeSlide 0.3s ease;
+    }
+    @keyframes fadeSlide {
+      from { opacity: 0; transform: translateX(40px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    .content-writeup {
+      background: #fefbf2;
+      padding: 1.5rem;
+      border-radius: 1.6rem;
+      margin: 1.2rem 0;
+      border-left: 6px solid #dbb45c;
+      line-height: 1.7;
+    }
+    .about-highlight {
+      background: #f5f0e3;
+      padding: 1rem 1.5rem;
+      border-radius: 1.4rem;
+      margin: 1rem 0;
+    }
+    .member-note {
+      background: #eef2e6;
+      border-radius: 1.2rem;
+      padding: 0.8rem 1.2rem;
+      margin: 1rem 0 1.5rem 0;
+      font-weight: 500;
+      color: #23635c;
+      border: 1px solid #cfddc4;
+    }
+    .bible-quote { font-size: 0.9rem; font-weight: 400; margin-top: 12px; opacity: 0.9; }
+    hr { margin: 1rem 0; border-color: #efe2ca; }
+    .flex-buttons { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 0.5rem; }
+    .member-select-row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-top: 0.5rem; }
+    .member-select-row select { flex: 2; }
+    .member-select-row button { width: auto; flex: 1; min-width: 120px; }
+
+    @media (max-width: 680px) {
+      .main-panel { padding: 1rem; }
+      .balance-amount { font-size: 2.2rem; }
+      .brand-header { flex-direction: column; text-align: center; }
+      .logo-area { justify-content: center; }
+      .auth-tabs button { min-width: 100px; }
+      .back-dashboard button { width: 100%; }
+      .admin-actions { flex-direction: column; align-items: stretch; }
+      .admin-actions button { width: 100%; margin-bottom: 0.4rem; }
+      .member-select-row select, .member-select-row button { width: 100%; }
+    }
+    .error-msg { color: #b85c3a; margin-top: 6px; font-size: 0.8rem; }
+    .about-mission-icon { font-size: 1.4rem; margin-right: 10px; color: #b68b40; }
+  </style>
+</head>
+<body>
+<div class="app-container">
+  <div class="brand-header">
+    <div class="logo-area">
+      <div class="cross-logo"><i class="fas fa-cross"></i></div>
+      <div class="logo"><h1>Christian Faith Currency</h1><p>✝️ P2P · Faith Driven · Sow in Faith</p></div>
+    </div>
+    <div class="verse">“Whoever sows sparingly will also reap sparingly” — 2 Corinthians 9:6</div>
+  </div>
+  <div class="main-panel" id="appRoot"></div>
+</div>
+
+<script>
+  // ======================= STORAGE KEYS =======================
+  const STORAGE_USERS = "cfc_users";
+  const STORAGE_SESSION = "cfc_currentUserId";
+  const STORAGE_DEPOSIT_REQ = "cfc_deposit_requests";
+  const STORAGE_WITHDRAW_REQ = "cfc_withdrawal_requests";
+  const STORAGE_PRAYER_REQ = "cfc_prayer_requests";
+  const STORAGE_SEED_SOW_REQ = "cfc_seed_sow_requests";
+  const STORAGE_CHARITY_REQ = "cfc_charity_requests";   // Charity donation requests
+
+  let currentUser = null;
+  let activeAuthView = "login";
+  let appMode = "dashboard";
+  let broadcastChannel = null;
+  let bibleInterval = null;
+
+  // ======================= HELPERS =======================
+  function loadUsers() { const raw = localStorage.getItem(STORAGE_USERS); return raw ? JSON.parse(raw) : []; }
+  function saveUsers(users) { localStorage.setItem(STORAGE_USERS, JSON.stringify(users)); window.dispatchEvent(new StorageEvent('storage', { key: STORAGE_USERS, newValue: JSON.stringify(users) })); }
+  function getSessionUserId() { return sessionStorage.getItem(STORAGE_SESSION); }
+  function setSession(id) { id ? sessionStorage.setItem(STORAGE_SESSION, id) : sessionStorage.removeItem(STORAGE_SESSION); }
+  function generateUniqueId(users) { let newId; do { newId = Math.floor(100000 + Math.random() * 900000).toString(); } while (users.some(u => u.id === newId)); return newId; }
+  function showToastMessage(msg, dur = 4000) { const existing = document.querySelector('.toast-notification'); if(existing) existing.remove(); const toast = document.createElement('div'); toast.className = 'toast-notification'; toast.innerText = msg; document.body.appendChild(toast); setTimeout(() => toast.remove(), dur); }
+  function refreshCurrentUser() { if (!currentUser) return null; const users = loadUsers(); const updated = users.find(u => u.id === currentUser.id); if (updated) { currentUser = updated; return updated; } return null; }
+  function copyToClipboard(text, successMsg) { navigator.clipboard.writeText(text).then(() => showToastMessage(successMsg || `✅ Copied`)).catch(() => showToastMessage("❌ Could not copy")); }
+  function escapeHtml(str) { if(!str) return ''; return str.replace(/[&<>]/g, function(m) { if(m==='&') return '&amp;'; if(m==='<') return '&lt;'; if(m==='>') return '&gt;'; return m;}); }
+
+  // ======================= REQUEST MANAGEMENT =======================
+  function loadDepositRequests() { const raw = localStorage.getItem(STORAGE_DEPOSIT_REQ); return raw ? JSON.parse(raw) : []; }
+  function saveDepositRequests(reqs) { localStorage.setItem(STORAGE_DEPOSIT_REQ, JSON.stringify(reqs)); }
+  function loadWithdrawalRequests() { const raw = localStorage.getItem(STORAGE_WITHDRAW_REQ); return raw ? JSON.parse(raw) : []; }
+  function saveWithdrawalRequests(reqs) { localStorage.setItem(STORAGE_WITHDRAW_REQ, JSON.stringify(reqs)); }
+  function addDepositRequest(amount) { if (!currentUser) return false; if (amount < 100) { showToastMessage("Minimum deposit ₦100"); return false; } const requests = loadDepositRequests(); requests.push({ id: Date.now() + Math.random(), userId: currentUser.id, userEmail: currentUser.email, userFullName: currentUser.fullName, amount, date: new Date().toLocaleString(), timestamp: Date.now(), status: "pending" }); saveDepositRequests(requests); return true; }
+  function addWithdrawalRequest(bankName, accountName, accountNumber, amount) { if (!currentUser) return false; if (amount < 500) { showToastMessage("Minimum withdrawal ₦500"); return false; } if (currentUser.balance < amount) { showToastMessage("Insufficient balance"); return false; } const requests = loadWithdrawalRequests(); requests.push({ id: Date.now() + Math.random(), userId: currentUser.id, userEmail: currentUser.email, userFullName: currentUser.fullName, amount, bankName, accountName, accountNumber, date: new Date().toLocaleString(), timestamp: Date.now(), status: "pending" }); saveWithdrawalRequests(requests); return true; }
+  function approveDeposit(reqId) { let deposits = loadDepositRequests(); const deposit = deposits.find(d => d.id == reqId); if (!deposit || deposit.status !== "pending") return false; let users = loadUsers(); const userIdx = users.findIndex(u => u.id === deposit.userId); if (userIdx === -1) return false; users[userIdx].balance += deposit.amount; if (!users[userIdx].transactions) users[userIdx].transactions = []; users[userIdx].transactions.unshift({ type: "DEPOSIT", amount: deposit.amount, date: new Date().toLocaleString(), note: "Admin credited" }); saveUsers(users); deposit.status = "completed"; saveDepositRequests(deposits); if (currentUser && currentUser.id === deposit.userId) refreshCurrentUser(); showToastMessage(`✅ Credited ₦${deposit.amount} to ${deposit.userFullName}`); return true; }
+  function approveWithdrawal(reqId) { let withdrawals = loadWithdrawalRequests(); const withdrawal = withdrawals.find(w => w.id == reqId); if (!withdrawal || withdrawal.status !== "pending") return false; let users = loadUsers(); const userIdx = users.findIndex(u => u.id === withdrawal.userId); if (userIdx === -1) return false; if (users[userIdx].balance < withdrawal.amount) { showToastMessage("User balance insufficient"); return false; } users[userIdx].balance -= withdrawal.amount; if (!users[userIdx].transactions) users[userIdx].transactions = []; users[userIdx].transactions.unshift({ type: "WITHDRAWAL", amount: withdrawal.amount, date: new Date().toLocaleString(), bank: withdrawal.bankName }); saveUsers(users); withdrawal.status = "completed"; saveWithdrawalRequests(withdrawals); if (currentUser && currentUser.id === withdrawal.userId) refreshCurrentUser(); showToastMessage(`✅ Withdrawal of ₦${withdrawal.amount} approved`); return true; }
+  function loadPrayerRequests() { const raw = localStorage.getItem(STORAGE_PRAYER_REQ); return raw ? JSON.parse(raw) : []; }
+  function savePrayerRequests(requests) { localStorage.setItem(STORAGE_PRAYER_REQ, JSON.stringify(requests)); }
+  function addPrayerRequest(prayerText) { if (!currentUser) return false; if (!prayerText || prayerText.trim().length < 5) { showToastMessage("Please write a meaningful prayer request (min 5 characters)."); return false; } const requests = loadPrayerRequests(); requests.push({ id: Date.now() + Math.random(), userId: currentUser.id, userFullName: currentUser.fullName, userEmail: currentUser.email, prayerText: prayerText.trim(), date: new Date().toLocaleString(), timestamp: Date.now(), status: "pending" }); savePrayerRequests(requests); return true; }
+  function approvePrayerRequest(prayerId) { let prayers = loadPrayerRequests(); const prayer = prayers.find(p => p.id == prayerId); if (!prayer || prayer.status !== "pending") return false; prayer.status = "approved"; prayer.approvedDate = new Date().toLocaleString(); savePrayerRequests(prayers); showToastMessage(`🙏 Prayer request from ${prayer.userFullName} approved.`); return true; }
+  function loadSeedSowRequests() { const raw = localStorage.getItem(STORAGE_SEED_SOW_REQ); return raw ? JSON.parse(raw) : []; }
+  function saveSeedSowRequests(requests) { localStorage.setItem(STORAGE_SEED_SOW_REQ, JSON.stringify(requests)); }
+  function addSeedSowRequest(amount, expectation) { if (!currentUser) return false; if (!amount || amount <= 0 || amount < 100) { showToastMessage("Sowing amount must be at least ₦100."); return false; } if (amount > currentUser.balance) { showToastMessage("Insufficient balance to sow this seed."); return false; } if (!expectation || expectation.trim().length < 5) { showToastMessage("Please write your expectation outcome (minimum 5 characters)."); return false; } const requests = loadSeedSowRequests(); requests.push({ id: Date.now() + Math.random(), userId: currentUser.id, userFullName: currentUser.fullName, userEmail: currentUser.email, amount: amount, expectation: expectation.trim(), date: new Date().toLocaleString(), timestamp: Date.now(), status: "pending" }); saveSeedSowRequests(requests); return true; }
+  function approveSeedSowRequest(reqId) { let seeds = loadSeedSowRequests(); const seed = seeds.find(s => s.id == reqId); if (!seed || seed.status !== "pending") return false; let users = loadUsers(); const userIdx = users.findIndex(u => u.id === seed.userId); if (userIdx === -1) { showToastMessage("User not found"); return false; } if (users[userIdx].balance < seed.amount) { showToastMessage(`Cannot approve: insufficient balance.`); return false; } users[userIdx].balance -= seed.amount; if (!users[userIdx].transactions) users[userIdx].transactions = []; users[userIdx].transactions.unshift({ type: "SEED SOWING", amount: seed.amount, date: new Date().toLocaleString(), expectation: seed.expectation.substring(0, 80), note: "Faith seed sown" }); saveUsers(users); seed.status = "completed"; seed.approvedDate = new Date().toLocaleString(); saveSeedSowRequests(seeds); if (currentUser && currentUser.id === seed.userId) refreshCurrentUser(); showToastMessage(`🌱 Seed approved! ₦${seed.amount} sown.`); return true; }
+  function rejectSeedSowRequest(reqId) { let seeds = loadSeedSowRequests(); const seed = seeds.find(s => s.id == reqId); if (!seed || seed.status !== "pending") return false; seed.status = "rejected"; saveSeedSowRequests(seeds); showToastMessage(`❌ Seed request rejected.`); return true; }
+  function loadCharityRequests() { const raw = localStorage.getItem(STORAGE_CHARITY_REQ); return raw ? JSON.parse(raw) : []; }
+  function saveCharityRequests(requests) { localStorage.setItem(STORAGE_CHARITY_REQ, JSON.stringify(requests)); }
+  function addCharityRequest(amount, cause) { if (!currentUser) return false; if (!amount || amount < 100) { showToastMessage("Donation amount must be at least ₦100."); return false; } if (!cause || cause.trim() === "") { showToastMessage("Please select a donation cause."); return false; } const requests = loadCharityRequests(); requests.push({ id: Date.now() + Math.random(), userId: currentUser.id, userFullName: currentUser.fullName, userEmail: currentUser.email, amount: amount, cause: cause, date: new Date().toLocaleString(), timestamp: Date.now(), status: "pending" }); saveCharityRequests(requests); return true; }
+  function approveCharityRequest(reqId) { let requests = loadCharityRequests(); const donation = requests.find(r => r.id == reqId); if (!donation || donation.status !== "pending") return false; let users = loadUsers(); const userIdx = users.findIndex(u => u.id === donation.userId); if (userIdx === -1) { showToastMessage("User not found"); return false; } if (users[userIdx].balance < donation.amount) { showToastMessage(`⚠️ Cannot approve: ${donation.userFullName} has insufficient balance (₦${users[userIdx].balance.toLocaleString()}).`); return false; } users[userIdx].balance -= donation.amount; if (!users[userIdx].transactions) users[userIdx].transactions = []; users[userIdx].transactions.unshift({ type: "CHARITY DONATION", amount: donation.amount, cause: donation.cause, date: new Date().toLocaleString(), note: `Donation for ${donation.cause}` }); saveUsers(users); donation.status = "completed"; donation.approvedDate = new Date().toLocaleString(); saveCharityRequests(requests); if (currentUser && currentUser.id === donation.userId) refreshCurrentUser(); showToastMessage(`❤️ Charity donation approved! ₦${donation.amount} deducted from ${donation.userFullName} for ${donation.cause}.`); return true; }
+  function rejectCharityRequest(reqId) { let requests = loadCharityRequests(); const donation = requests.find(r => r.id == reqId); if (!donation || donation.status !== "pending") return false; donation.status = "rejected"; saveCharityRequests(requests); showToastMessage(`❌ Charity donation request rejected.`); return true; }
+  function getAllOtherMembers() { const users = loadUsers(); return users.filter(u => u.id !== currentUser.id).map(u => ({ id: u.id, name: u.fullName, email: u.email })); }
+
+  // ======================= RENDER PAGES =======================
+  function renderDashboard() { /* same as original but with full feature set */ 
+    if (!currentUser) return;
+    if (bibleInterval) clearInterval(bibleInterval);
+    refreshCurrentUser();
+    const root = document.getElementById("appRoot");
+    root.innerHTML = `
+      <div class="dashboard-card">
+        <div class="page-hint"><i class="fas fa-lightbulb"></i><span><strong>Dashboard hint:</strong> Manage your balance, request prayer, sow financial seeds, send P2P transfers, and donate to charity (admin approves).</span></div>
+        <div class="user-welcome"><div><strong> ${escapeHtml(currentUser.fullName)}</strong> | ✝️ Faith Member<br>🆔 ID: ${currentUser.id} <i class="fas fa-copy copy-icon" id="copyIdBtn" style="cursor:pointer; margin-left:6px;"></i></div><button id="logoutBtn" class="btn-secondary" style="width:auto;"><i class="fas fa-sign-out-alt"></i> Logout</button></div>
+        <div class="balance-card"><div>Your Faith Balance</div><div class="balance-amount">₦ ${currentUser.balance.toLocaleString()}</div><div id="rotatingBibleQuote" class="bible-quote">“Sow for yourselves righteousness; reap the fruit of unfailing love.” — Hosea 10:12</div></div>
+        <h3 style="margin-bottom:1rem;"><i class="fas fa-cog"></i> Faith Services</h3>
+        <div class="functions-grid">
+          <div class="func-btn" id="fundBtn"><i class="fas fa-upload"></i> Fund Wallet</div><div class="func-btn" id="withdrawBtn"><i class="fas fa-download"></i> Withdraw</div>
+          <div class="func-btn" id="sendMoneyBtn"><i class="fas fa-paper-plane"></i> Send Money (P2P)</div><div class="func-btn" id="charityBtn"><i class="fas fa-hand-holding-heart"></i> Charity Donation</div>
+          <div class="func-btn" id="transactionsBtn"><i class="fas fa-history"></i> Transaction History</div><div class="func-btn" id="contactBtn"><i class="fas fa-headset"></i> Contact Admin</div>
+          <div class="func-btn" id="aboutBtn"><i class="fas fa-info-circle"></i> About Us</div><div class="func-btn" id="prayerRequestBtn"><i class="fas fa-hands-praying"></i>  Prayer Request</div>
+          <div class="func-btn" id="sowSeedBtn"><i class="fas fa-seedling"></i>  Sow Seed of Faith</div><div class="func-btn" id="adminUnitBtn"><i class="fas fa-lock"></i> Admin Unit</div>
+        </div>
+      </div>
+    `;
+    document.getElementById("copyIdBtn")?.addEventListener("click", () => copyToClipboard(currentUser.id, "✅ Faith ID copied"));
+    document.getElementById("logoutBtn")?.addEventListener("click", logout);
+    document.getElementById("fundBtn")?.addEventListener("click", () => { appMode = "fundWallet"; renderFundWalletPage(); });
+    document.getElementById("withdrawBtn")?.addEventListener("click", () => { appMode = "withdrawal"; renderWithdrawalPage(); });
+    document.getElementById("sendMoneyBtn")?.addEventListener("click", () => { appMode = "sendMoney"; renderSendMoneyPage(); });
+    document.getElementById("charityBtn")?.addEventListener("click", () => { appMode = "charity"; renderCharityPage(); });
+    document.getElementById("transactionsBtn")?.addEventListener("click", () => { appMode = "transactions"; renderTransactionsPage(); });
+    document.getElementById("contactBtn")?.addEventListener("click", () => { appMode = "contact"; renderContactPage(); });
+    document.getElementById("aboutBtn")?.addEventListener("click", () => { appMode = "about"; renderAboutPage(); });
+    document.getElementById("prayerRequestBtn")?.addEventListener("click", () => { appMode = "prayerRequest"; renderPrayerRequestPage(); });
+    document.getElementById("sowSeedBtn")?.addEventListener("click", () => { appMode = "sowSeed"; renderSowSeedPage(); });
+    document.getElementById("adminUnitBtn")?.addEventListener("click", () => { const code = prompt("Enter Admin Code:"); if(code === "Act-1122") { appMode = "adminUnit"; renderAdminUnit(); } else showToastMessage("Invalid admin code!"); });
+    startBibleRotation();
+  }
+
+  // Enhanced About Us page with full mission and platform summary
+  function renderAboutPage() { 
+    const root = document.getElementById("appRoot");
+    root.innerHTML = `
+      <div class="page-card">
+        <div class="page-hint"><i class="fas fa-church"></i><span><strong>Our Vision:</strong> Raising a generation of believers who walk in financial faithfulness, prayer, and kingdom generosity.</span></div>
+        <h2><i class="fas fa-info-circle"></i> About Christian Faith Currency</h2>
+        <div class="content-writeup">
+          <p><i class="fas fa-cross about-mission-icon"></i> <strong>Christian Faith Currency (CFC)</strong> is a unique faith-driven digital community where believers connect, grow spiritually, and steward their resources according to biblical principles. We are not just a financial platform — we are a movement of Kingdom-minded individuals who sow seeds of faith, lift each other in prayer, and support charity works with transparency and accountability.</p>
+          
+          <div class="about-highlight">
+            <i class="fas fa-bullhorn"></i> <strong>🌱 Our Mission</strong><br>
+            To equip Christians with a peer-to-peer ecosystem that integrates financial empowerment, prayer support, and Kingdom giving. We believe that every financial seed sown with expectation releases supernatural breakthrough, and every prayer lifted strengthens the body of Christ.
+          </div>
+
+          <h3><i class="fas fa-hand-sparkles"></i> What Makes CFC Different?</h3>
+          <ul style="margin-left: 1.5rem; margin-bottom: 1rem;">
+            <li><strong>✝️ Faith-First Finance:</strong> Manage your wallet, send P2P transfers, request withdrawals/deposits — all overseen by admin with integrity.</li>
+            <li><strong>🙏 Prayer Wall & Intercession:</strong> Submit prayer requests; after admin approval, your request is publicly lifted in faith. We believe in the power of agreement.</li>
+            <li><strong>🌾 Sow a Seed of Faith:</strong> Dedicate a financial seed with a written expectation. Admin verifies and deducts from balance — a prophetic act of trusting God for harvest.</li>
+            <li><strong>❤️ Charity Donations:</strong> Give towards Children’s Ministry, Evangelism, Church Building, Orphan Care, Bible Distribution and more. Admin approves and deducts — 100% transparent.</li>
+            <li><strong>🤝 Peer-to-Peer Kingdom Transfers:</strong> Instantly send funds to any registered member, building a community of mutual support.</li>
+            <li><strong>🛡️ Admin Oversight:</strong> Every deposit, withdrawal, seed sowing, prayer, and charity request is reviewed to ensure safety, fairness, and biblical stewardship.</li>
+          </ul>
+
+          <h3><i class="fas fa-scroll"></i> Our Spiritual Foundation</h3>
+          <p>We stand on 2 Corinthians 9:6-8: <em>“Whoever sows sparingly will also reap sparingly, and whoever sows bountifully will also reap bountifully.”</em> Every financial action is an act of worship. We also embrace 1 Thessalonians 5:17 — <em>“Pray without ceasing.”</em> Through the Prayer Wall, we create a sanctuary of intercession.</p>
+          
+          <h3><i class="fas fa-users"></i> Who Can Join?</h3>
+          <p>Christian Faith Currency is open to born-again believers who confess Jesus Christ as Lord. Upon signup, members receive a welcome bonus of ₦50 and a unique Faith ID. The platform is designed for mature Christians who desire to grow in financial faithfulness and prayer partnership.</p>
+          
+          <h3><i class="fas fa-chart-line"></i> How It Works (Summary)</h3>
+          <p>1. <strong>Signup & Login</strong> (affirm your faith).<br>
+             2. <strong>Fund your wallet</strong> via deposit request → admin credits your balance.<br>
+             3. <strong>Send money</strong> to any member using their Faith ID.<br>
+             4. <strong>Request withdrawal</strong> to your bank account (admin processes).<br>
+             5. <strong>Sow a seed</strong> (dedicate amount + expectation) → admin approves.<br>
+             6. <strong>Submit prayer request</strong> → admin approves to display on Prayer Wall.<br>
+             7. <strong>Give to charity</strong> → select cause + amount → admin approves & deducts.<br>
+             8. <strong>Admin Unit</strong> ensures all transactions align with kingdom ethics.</p>
+          
+          <div class="about-highlight" style="background:#e4ddcc;">
+            <i class="fas fa-hands-helping"></i> <strong>Together, we are building a community where faith meets action. Every seed, every prayer, every gift echoes into eternity.</strong>
+          </div>
+          <p style="margin-top: 0.5rem;">📧 <strong>Contact Us:</strong> salvationdivine9@gmail.com | 📞 08167527404</p>
+        </div>
+        <div class="back-dashboard"><button id="backDashboardBtn" class="btn-secondary"><i class="fas fa-arrow-left"></i> Back to Dashboard</button></div>
+      </div>
+    `;
+    document.getElementById("backDashboardBtn")?.addEventListener("click", () => { appMode = "dashboard"; renderDashboard(); });
+  }
+
+  // All other functions remain exactly as originally (fund, withdraw, send, charity page, admin, etc) - they are unchanged for full functionality
+  function renderCharityPage() { refreshCurrentUser(); const root = document.getElementById("appRoot"); root.innerHTML = `<div class="page-card"><div class="page-hint"><i class="fas fa-hand-holding-heart"></i><span><strong>Charity Donation hint:</strong> Choose a cause and an amount. Your request will be reviewed by admin. Once approved, the amount will be deducted from your Faith balance. No bank details needed — all by faith!</span></div><h2><i class="fas fa-hand-holding-heart"></i> Charity Donation</h2><div class="member-note">💰 Your current balance: <strong>₦${currentUser.balance.toLocaleString()}</strong> (deduction after admin approval)</div><div class="form-group"><label>🌾 Donation Cause</label><select id="donationCause"><option value="">-- Select a cause --</option><option value="Children's Ministry">👧 Children's Ministry</option><option value="Evangelism Outreach">📢 Evangelism Outreach</option><option value="Church Building">⛪ Church Building</option><option value="Bible Distribution">📖 Bible Distribution</option><option value="Orphan Care">🤝 Orphan Care</option><option value="Missionary Support">🌍 Missionary Support</option><option value="Food for Needy">🍞 Food for Needy</option></select></div><div class="form-group"><label>💰 Donation Amount (₦) — minimum ₦100</label><input type="number" id="donationAmount" min="100" step="100" placeholder="e.g., 2000"></div><button id="submitDonationBtn"><i class="fas fa-seedling"></i> Submit Donation Request</button><div class="back-dashboard"><button id="backDashboardBtn" class="btn-secondary">← Back to Dashboard</button></div></div>`; document.getElementById("submitDonationBtn")?.addEventListener("click", () => { const amount = parseFloat(document.getElementById("donationAmount")?.value); const cause = document.getElementById("donationCause")?.value; if (isNaN(amount) || amount < 100) { showToastMessage("Please enter a valid amount (min ₦100)."); return; } if (!cause) { showToastMessage("Please select a donation cause."); return; } if (addCharityRequest(amount, cause)) { showToastMessage("🙏 Charity donation request submitted for admin approval."); appMode = "dashboard"; renderDashboard(); } }); document.getElementById("backDashboardBtn")?.addEventListener("click", () => { appMode = "dashboard"; renderDashboard(); }); }
+  function renderAdminUnit() { const deposits = loadDepositRequests(), withdrawals = loadWithdrawalRequests(), prayers = loadPrayerRequests(), seeds = loadSeedSowRequests(); const charityReqs = loadCharityRequests(); const pendingCharity = charityReqs.filter(c => c.status === "pending"); const root = document.getElementById("appRoot"); root.innerHTML = `<div class="page-card"><div class="page-hint"><i class="fas fa-shield-alt"></i><span><strong>Admin hint:</strong> Approve deposit/withdrawal, prayer, seed sowing, and charity donation requests. Charity approval deducts user balance instantly.</span></div><h2><i class="fas fa-user-shield"></i> Admin Unit</h2><div class="flex-buttons"><button id="refreshAdmin" class="btn-secondary">⟳ Refresh</button><button id="backAdminBtn" class="btn-secondary">← Dashboard</button></div><h3>📥 Deposit Requests</h3>${deposits.length ? deposits.map(d => `<div class="request-row"><div><strong>💰 Deposit</strong> <span class="status-badge">${d.status}</span></div><div>👤 ${escapeHtml(d.userFullName)} (${escapeHtml(d.userEmail)})</div><div>💵 ₦${d.amount.toLocaleString()}</div>${d.status === "pending" ? `<div class="admin-actions"><button class="approveDeposit" data-id="${d.id}">✅ Credit Wallet</button></div>` : ''}</div>`).join('') : "<p>None</p>"}<h3>📤 Withdrawal Requests</h3>${withdrawals.length ? withdrawals.map(w => `<div class="request-row"><div><strong>🏦 Withdrawal</strong> <span class="status-badge">${w.status}</span></div><div>👤 ${escapeHtml(w.userFullName)}</div><div>💸 ₦${w.amount}</div>${w.status === "pending" ? `<div class="admin-actions"><button class="approveWithdraw" data-id="${w.id}">✔ Approve</button></div>` : ''}</div>`).join('') : "<p>None</p>"}<h3>🙏 Prayer Requests</h3>${prayers.filter(p => p.status === "pending").length ? prayers.filter(p => p.status === "pending").map(p => `<div class="request-row"><div><strong>✝️ Prayer</strong> <span class="status-badge">Pending</span></div><div>${escapeHtml(p.userFullName)}</div><div class="prayer-text">${escapeHtml(p.prayerText)}</div><div class="admin-actions"><button class="approvePrayerBtn" data-id="${p.id}">✅ Approve Prayer</button></div></div>`).join('') : "<p>✨ No pending prayers.</p>"}<h3>🌾 Seed of Faith Requests</h3>${seeds.filter(s => s.status === "pending").length ? seeds.filter(s => s.status === "pending").map(s => `<div class="request-row"><div><strong>🌱 Seed Sowing</strong> <span class="status-badge">Pending</span></div><div>👤 ${escapeHtml(s.userFullName)}</div><div>💰 ₦${s.amount}</div><div class="expectation-text">Expectation: “${escapeHtml(s.expectation)}”</div><div class="admin-actions"><button class="approveSeedBtn" data-id="${s.id}">✅ Approve & Deduct</button><button class="rejectSeedBtn" data-id="${s.id}">❌ Reject</button></div></div>`).join('') : "<p>No pending seed requests.</p>"}<h3>❤️ Charity Donation Requests (NEW)</h3>${pendingCharity.length ? pendingCharity.map(c => `<div class="request-row"><div><strong>🎁 Charity Donation</strong> <span class="status-badge">Pending</span></div><div>👤 ${escapeHtml(c.userFullName)} (${escapeHtml(c.userEmail)})</div><div>🎯 Cause: ${escapeHtml(c.cause)}</div><div>💰 Amount: ₦${c.amount.toLocaleString()}</div><div class="admin-actions"><button class="approveCharityBtn" data-id="${c.id}">✅ Approve & Deduct</button><button class="rejectCharityBtn" data-id="${c.id}">❌ Reject</button></div></div>`).join('') : "<p>No pending charity donations.</p>"}</div>`; document.querySelectorAll(".approveDeposit").forEach(btn => btn.addEventListener("click", () => { approveDeposit(btn.getAttribute("data-id")); renderAdminUnit(); })); document.querySelectorAll(".approveWithdraw").forEach(btn => btn.addEventListener("click", () => { approveWithdrawal(btn.getAttribute("data-id")); renderAdminUnit(); })); document.querySelectorAll(".approvePrayerBtn").forEach(btn => btn.addEventListener("click", () => { approvePrayerRequest(btn.getAttribute("data-id")); renderAdminUnit(); })); document.querySelectorAll(".approveSeedBtn").forEach(btn => btn.addEventListener("click", () => { approveSeedSowRequest(btn.getAttribute("data-id")); renderAdminUnit(); })); document.querySelectorAll(".rejectSeedBtn").forEach(btn => btn.addEventListener("click", () => { rejectSeedSowRequest(btn.getAttribute("data-id")); renderAdminUnit(); })); document.querySelectorAll(".approveCharityBtn").forEach(btn => btn.addEventListener("click", () => { approveCharityRequest(btn.getAttribute("data-id")); renderAdminUnit(); })); document.querySelectorAll(".rejectCharityBtn").forEach(btn => btn.addEventListener("click", () => { rejectCharityRequest(btn.getAttribute("data-id")); renderAdminUnit(); })); document.getElementById("refreshAdmin")?.addEventListener("click", () => renderAdminUnit()); document.getElementById("backAdminBtn")?.addEventListener("click", () => { appMode = "dashboard"; renderDashboard(); }); }
+  function renderSendMoneyPage() { const otherMembers = getAllOtherMembers(); const root = document.getElementById("appRoot"); root.innerHTML = `<div class="page-card"><div class="page-hint"><i class="fas fa-users"></i><span><strong>P2P Transfer hint:</strong> Send funds to any registered Faith member.</span></div><h2><i class="fas fa-paper-plane"></i> Send Money to Faith Member</h2><div class="form-group"><label>📇 Select Faith Member (Optional)</label><div class="member-select-row"><select id="memberSelect"><option value="">-- Select member --</option>${otherMembers.map(m => `<option value="${escapeHtml(m.id)}">${escapeHtml(m.id)} - ${escapeHtml(m.name)}</option>`).join('')}</select><button id="fillSelectedBtn" class="btn-secondary">Use Selected</button></div></div><div class="form-group"><label>🆔 Recipient Faith ID</label><input id="recipientId" placeholder="Enter Faith ID"></div><div class="form-group"><label>💰 Amount (₦)</label><input id="transferAmount" type="number" placeholder="Amount (min 1)" min="1"></div><button id="sendTransferBtn"><i class="fas fa-paper-plane"></i> Send Now</button><div class="back-dashboard"><button id="backDashboardBtn" class="btn-secondary">← Back to Dashboard</button></div></div>`; document.getElementById("fillSelectedBtn")?.addEventListener("click", () => { const select = document.getElementById("memberSelect"); const selectedId = select.value; if (selectedId) { document.getElementById("recipientId").value = selectedId; showToastMessage(`Selected member ID: ${selectedId}`); } else showToastMessage("No member selected"); }); document.getElementById("sendTransferBtn")?.addEventListener("click", () => { const rid = document.getElementById("recipientId")?.value.trim(); const amt = parseFloat(document.getElementById("transferAmount")?.value); if (!rid) { showToastMessage("Enter recipient Faith ID"); return; } if (isNaN(amt) || amt <= 0) { showToastMessage("Valid amount required"); return; } let users = loadUsers(); const senderIdx = users.findIndex(u => u.id === currentUser.id); const recipientIdx = users.findIndex(u => u.id === rid); if (senderIdx === -1 || recipientIdx === -1) { showToastMessage("Recipient not found"); return; } if (users[senderIdx].balance < amt) { showToastMessage("Insufficient balance"); return; } if (rid === currentUser.id) { showToastMessage("Cannot send to yourself"); return; } users[senderIdx].balance -= amt; users[recipientIdx].balance += amt; if (!users[senderIdx].transactions) users[senderIdx].transactions = []; if (!users[recipientIdx].transactions) users[recipientIdx].transactions = []; users[senderIdx].transactions.unshift({ type: "SENT", toId: rid, toName: users[recipientIdx].fullName, amount: amt, date: new Date().toLocaleString() }); users[recipientIdx].transactions.unshift({ type: "RECEIVED", fromId: currentUser.id, fromName: currentUser.fullName, amount: amt, date: new Date().toLocaleString() }); saveUsers(users); refreshCurrentUser(); if (broadcastChannel) broadcastChannel.postMessage({ type: "TRANSFER", recipientId: rid, amount: amt, fromName: currentUser.fullName }); showToastMessage(`✅ Sent ₦${amt} to ${users[recipientIdx].fullName} (${rid})`); appMode = "dashboard"; renderDashboard(); }); document.getElementById("backDashboardBtn")?.addEventListener("click", () => { appMode = "dashboard"; renderDashboard(); }); }
+  function renderFundWalletPage() { const root = document.getElementById("appRoot"); root.innerHTML = `<div class="page-card"><div class="page-hint"><i class="fas fa-info-circle"></i><span><strong>Fund Wallet hint:</strong> Request deposit via bank transfer. Admin approves after confirmation. Minimum ₦100.</span></div><h2>Fund Wallet</h2><div class="bank-details"><div>🏦 FIDELITY | 6560534729 | SALVATION DIVINE NGBRIGBO</div></div><div class="form-group"><input id="depositAmount" placeholder="Amount (₦)"></div><button id="submitDepositBtn">Submit Deposit Request</button><div class="back-dashboard"><button id="backDashboardBtn" class="btn-secondary">Back</button></div></div>`; document.getElementById("submitDepositBtn")?.addEventListener("click", () => { const amt = parseFloat(document.getElementById("depositAmount")?.value); if(addDepositRequest(amt)){ showToastMessage("Deposit request submitted."); appMode="dashboard"; renderDashboard(); } }); document.getElementById("backDashboardBtn")?.addEventListener("click", () => { appMode = "dashboard"; renderDashboard(); }); }
+  function renderWithdrawalPage() { const root = document.getElementById("appRoot"); root.innerHTML = `<div class="page-card"><div class="page-hint"><i class="fas fa-info-circle"></i><span><strong>Withdrawal hint:</strong> Request payout to your bank account. Min ₦500. Admin reviews and deducts balance.</span></div><h2>Withdraw</h2><div class="form-group"><input id="withdrawBank" placeholder="Bank Name"></div><div class="form-group"><input id="withdrawAccName" placeholder="Account Name"></div><div class="form-group"><input id="withdrawAccNum" placeholder="Account Number"></div><div class="form-group"><input id="withdrawAmount" type="number" placeholder="Amount (min 500)"></div><button id="submitWithdrawBtn">Submit Withdrawal Request</button><div class="back-dashboard"><button id="backDashboardBtn" class="btn-secondary">Back</button></div></div>`; document.getElementById("submitWithdrawBtn")?.addEventListener("click", () => { const bank = document.getElementById("withdrawBank")?.value; const name = document.getElementById("withdrawAccName")?.value; const num = document.getElementById("withdrawAccNum")?.value; const amt = parseFloat(document.getElementById("withdrawAmount")?.value); if(addWithdrawalRequest(bank, name, num, amt)){ showToastMessage("Withdrawal request submitted."); appMode="dashboard"; renderDashboard(); } }); document.getElementById("backDashboardBtn")?.addEventListener("click", () => { appMode = "dashboard"; renderDashboard(); }); }
+  function renderTransactionsPage() { refreshCurrentUser(); const txs = currentUser.transactions || []; const txHtml = txs.map(tx => `<div style="padding:0.7rem 0; border-bottom:1px solid #efe2ca;">${tx.type}: ₦${tx.amount} - ${tx.date} ${tx.cause ? `(${tx.cause})` : ''} ${tx.toId ? `→ ${tx.toId}` : tx.fromId ? `← ${tx.fromName || tx.fromId}` : ''}</div>`).join(''); const root = document.getElementById("appRoot"); root.innerHTML = `<div class="page-card"><div class="page-hint"><i class="fas fa-history"></i><span><strong>Transactions hint:</strong> See all your deposits, withdrawals, P2P transfers, seed sowings and charity donations.</span></div><h2>Transaction History</h2>${txHtml || "<p>No transactions yet.</p>"}<div class="back-dashboard"><button id="backDashboardBtn" class="btn-secondary">Back</button></div></div>`; document.getElementById("backDashboardBtn")?.addEventListener("click", () => { appMode = "dashboard"; renderDashboard(); }); }
+  function renderContactPage() { const root = document.getElementById("appRoot"); root.innerHTML = `<div class="page-card"><div class="page-hint"><i class="fas fa-headset"></i><span><strong>Contact hint:</strong> For support, inquiries or prayer, reach out to our admin team.</span></div><h2>Contact Admin</h2><div>📧 salvationdivine9@gmail.com<br>📞 08167527404</div><div class="back-dashboard"><button id="backDashboardBtn" class="btn-secondary">Back</button></div></div>`; document.getElementById("backDashboardBtn")?.addEventListener("click", () => { appMode = "dashboard"; renderDashboard(); }); }
+  function renderPrayerRequestPage() { const root = document.getElementById("appRoot"); root.innerHTML = `<div class="page-card"><div class="page-hint"><i class="fas fa-pray"></i><span><strong>Prayer hint:</strong> Submit your request. Admin will approve and display it on the prayer wall.</span></div><h2><i class="fas fa-hands-praying"></i> Submit a Prayer Request</h2><div class="form-group"><textarea id="prayerTextArea" placeholder="Write your prayer request..." rows="4"></textarea></div><button id="submitPrayerBtn">Submit for Approval</button><div class="back-dashboard"><button id="backDashboardBtn" class="btn-secondary">Back</button></div></div>`; document.getElementById("submitPrayerBtn")?.addEventListener("click", () => { const txt = document.getElementById("prayerTextArea")?.value; if(addPrayerRequest(txt)){ showToastMessage("Prayer request submitted."); appMode="dashboard"; renderDashboard(); } }); document.getElementById("backDashboardBtn")?.addEventListener("click", () => { appMode = "dashboard"; renderDashboard(); }); }
+  function renderSowSeedPage() { refreshCurrentUser(); const root = document.getElementById("appRoot"); root.innerHTML = `<div class="page-card"><div class="page-hint"><i class="fas fa-seedling"></i><span><strong>Sow Seed hint:</strong> Dedicate a financial seed with an expectation. Admin approves after checking your balance.</span></div><h2><i class="fas fa-seedling"></i> Sow Seed of Faith</h2><div class="member-note">🌾 Current balance: <strong>₦${currentUser.balance.toLocaleString()}</strong></div><div class="form-group"><label>🌱 Amount (₦)</label><input type="number" id="sowAmount" min="100" step="100"></div><div class="form-group"><label>📜 Expectation Outcome</label><textarea id="expectationOutcome" rows="3" placeholder="Example: I expect divine breakthrough, healing, financial restoration..."></textarea></div><button id="submitSeedBtn">Submit Seed for Approval</button><div class="back-dashboard"><button id="backDashboardBtn" class="btn-secondary">Back</button></div></div>`; document.getElementById("submitSeedBtn")?.addEventListener("click", () => { const amount = parseFloat(document.getElementById("sowAmount")?.value); const expectation = document.getElementById("expectationOutcome")?.value; if (isNaN(amount) || amount < 100) { showToastMessage("Amount must be at least ₦100."); return; } if (!expectation || expectation.trim().length < 5) { showToastMessage("Please write your expectation (min 5 chars)."); return; } if (amount > currentUser.balance) { showToastMessage(`Insufficient balance: ₦${currentUser.balance.toLocaleString()}.`); return; } if (addSeedSowRequest(amount, expectation)) { showToastMessage("🌿 Seed request sent to Admin for approval."); appMode="dashboard"; renderDashboard(); } }); document.getElementById("backDashboardBtn")?.addEventListener("click", () => { appMode = "dashboard"; renderDashboard(); }); }
+  function startBibleRotation() { if(bibleInterval) clearInterval(bibleInterval); bibleInterval = setInterval(() => { const elem = document.getElementById("rotatingBibleQuote"); if(elem) { const quotes = ["“Whoever sows generously will also reap generously.” — 2 Cor 9:6","“Faith without works is dead.” — James 2:26","“Give, and it will be given to you.” — Luke 6:38","“Pray without ceasing” — 1 Thess 5:17"]; elem.innerText = quotes[Math.floor(Math.random()*quotes.length)]; } }, 15000); }
+  function logout() { if(bibleInterval) clearInterval(bibleInterval); setSession(null); currentUser = null; if(broadcastChannel) broadcastChannel.close(); renderAuthScreen(); }
+  function handleSignup(e) { e.preventDefault(); const fullName = document.getElementById("signupName").value.trim(); const email = document.getElementById("signupEmail").value.trim(); const password = document.getElementById("signupPassword").value; const isChristian = document.getElementById("christianCheckbox").checked; if(!fullName||!email||!password||!isChristian) { document.getElementById("signupError").innerText = "All fields & faith affirmation required"; return; } let users = loadUsers(); if(users.some(u=>u.email===email)) { document.getElementById("signupError").innerText = "Email exists"; return; } const newId = generateUniqueId(users); users.push({ id:newId, fullName, email, password, balance:50, isChristian:true, transactions:[] }); saveUsers(users); showToastMessage("Account created! Please login."); activeAuthView="login"; renderAuthScreen(); }
+  function handleLogin(e) { e.preventDefault(); const email = document.getElementById("loginEmail").value.trim(); const password = document.getElementById("loginPassword").value; const user = loadUsers().find(u=>u.email===email && u.password===password); if(!user||!user.isChristian) { document.getElementById("loginError").innerText = "Invalid credentials or not a Christian member"; return; } setSession(user.id); currentUser=user; appMode="dashboard"; initBroadcastChannel(); renderDashboard(); }
+  function renderAuthScreen() { if(bibleInterval) clearInterval(bibleInterval); const root = document.getElementById("appRoot"); root.innerHTML = `<div class="auth-card"><div class="auth-tabs"><button id="showLoginBtn" class="${activeAuthView==='login' ? 'active-tab' : ''}">Login</button><button id="showSignupBtn" class="${activeAuthView==='signup' ? 'active-tab' : ''}">Signup</button></div><div id="authForm"></div></div>`; const container = document.getElementById("authForm"); if(activeAuthView==="login"){ container.innerHTML = `<form id="loginForm"><div class="form-group"><input type="email" id="loginEmail" placeholder="Email address" required></div><div class="form-group"><input type="password" id="loginPassword" placeholder="Password" required></div><div id="loginError" class="error-msg"></div><button type="submit">Login to Faith Account</button></form><div style="text-align:center; margin-top:1rem;"><small>New? <strong id="switchSignup" style="cursor:pointer;">Create account</strong></small></div>`; document.getElementById("loginForm")?.addEventListener("submit",handleLogin); document.getElementById("switchSignup")?.addEventListener("click",()=>{ activeAuthView="signup"; renderAuthScreen(); }); } else { container.innerHTML = `<form id="signupForm"><div class="form-group"><input type="text" id="signupName" placeholder="Full Name" required></div><div class="form-group"><input type="email" id="signupEmail" placeholder="Email" required></div><div class="form-group"><input type="password" id="signupPassword" placeholder="Password" required></div><div style="margin: 1rem 0;"><input type="checkbox" id="christianCheckbox"> <label style="display:inline; margin-left:8px;">I confess Jesus Christ as Lord ✝️</label></div><div id="signupError" class="error-msg"></div><button type="submit">Sign Up</button></form><div style="text-align:center; margin-top:1rem;"><small>Already have account? <strong id="switchLogin" style="cursor:pointer;">Login</strong></small></div>`; document.getElementById("signupForm")?.addEventListener("submit",handleSignup); document.getElementById("switchLogin")?.addEventListener("click",()=>{ activeAuthView="login"; renderAuthScreen(); }); } document.getElementById("showLoginBtn")?.addEventListener("click",()=>{ activeAuthView="login"; renderAuthScreen(); }); document.getElementById("showSignupBtn")?.addEventListener("click",()=>{ activeAuthView="signup"; renderAuthScreen(); }); }
+  function initBroadcastChannel() { if(broadcastChannel) broadcastChannel.close(); broadcastChannel = new BroadcastChannel("cfc_p2p_channel"); broadcastChannel.onmessage = (event) => { if(event.data.type==="TRANSFER" && currentUser && event.data.recipientId===currentUser.id) showToastMessage(`✨ Received ₦${event.data.amount} from ${event.data.fromName || 'a Faith member'}`); }; }
+  function initApp() { const sid = getSessionUserId(); if(sid){ const users=loadUsers(); const logged=users.find(u=>u.id===sid); if(logged && logged.isChristian){ currentUser=logged; appMode="dashboard"; initBroadcastChannel(); renderDashboard(); return; } else setSession(null); } activeAuthView="login"; renderAuthScreen(); }
+  initApp();
+</script>
+</body>
+</html>
