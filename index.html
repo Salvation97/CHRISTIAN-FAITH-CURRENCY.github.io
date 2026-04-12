@@ -544,5 +544,9 @@
   function initApp() { const sid = getSessionUserId(); if(sid){ const users=loadUsers(); const logged=users.find(u=>u.id===sid); if(logged && logged.isChristian){ currentUser=logged; appMode="dashboard"; initBroadcastChannel(); renderDashboard(); return; } else setSession(null); } activeAuthView="login"; renderAuthScreen(); }
   initApp();
 </script>
+<script>
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+</script>
+<script defer src="/_vercel/insights/script.js"></script>
 </body>
 </html>
